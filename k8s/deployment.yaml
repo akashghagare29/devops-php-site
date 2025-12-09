@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-php-deployment
+  labels:
+    app: devops-php
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-php
+  template:
+    metadata:
+      labels:
+        app: devops-php
+    spec:
+      containers:
+        - name: devops-php
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/devops-php:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
