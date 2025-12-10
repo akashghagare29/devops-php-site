@@ -13,7 +13,7 @@ eksctl create cluster \
   --nodes 1 \
   --nodes-min 1 \
   --nodes-max 1 \
-  --node-type t3.medium \
+  --node-type t2.micro \
   --managed
 
 echo "⏳ Waiting for nodes..."
