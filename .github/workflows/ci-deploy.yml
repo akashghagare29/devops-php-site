@@ -40,5 +40,5 @@ jobs:
 
       - name: Set image in k8s deployment and apply
         run: |
-          kubectl set image deployment/devops-php-deployment devops-php=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} --record
+          kubectl set image deployment/devops-php-deployment devops-php=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
           kubectl rollout status deployment/devops-php-deployment
